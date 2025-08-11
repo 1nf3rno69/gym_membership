@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment_Management</title>
+    <title>Form Management</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <h2>Payments</h2>
+    <h2>Registration Form</h2>
     <table>
         <tr>
             <th>No.</th>
-            <th>Name</th>
             <th>ic_number</th>
-            <th>Phone</th>
+            <th>name</th>
+            <th>phone</th>
             <th>address</th>
             <th>card_number</th>
             <th>expiry_month</th>
-            <th>expiry_Year</th>
+            <th>expiry_year</th>
             <th>cvv</th>
         </tr>
         <?php
@@ -25,7 +25,7 @@
     $servername = "localhost";
     $username = "root"; // Change to your MySQL username
     $password = ""; // Change to your MySQL password
-    $dbname = "Iron Haven";
+    $dbname = "gym_membership"; // Change to your database name
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -35,7 +35,7 @@
     }
 
     // Query payments table
-    $sql = "SELECT name, ic_number, phone, address, card_number, expiry_month, expiry_year, cvv FROM payments";
+    $sql = "SELECT name, ic_number, phone, address, card_number, expiry_month, expiry_year, cvv FROM form";
     $result = $conn->query($sql);
 
     // Check for errors
@@ -70,3 +70,4 @@
 
     </table>
 </body>
+</html>

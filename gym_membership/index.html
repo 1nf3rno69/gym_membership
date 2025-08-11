@@ -10,10 +10,10 @@
  <div id="top"></div>
   <header class="navbar">
     <div class="logo">
-      <img src="./img/Icon/Fitness.png" alt="kote">
+      <img src="./img/Icon/Iron Haven.png" alt="kote">
     </div>
 
-    <nav class="nav-links">
+     <nav class="nav-links">
       <a href="#">Membership</a>
       <a href="#">Personal Training</a>
       <a href="#">Why Fitness First</a>
@@ -22,10 +22,9 @@
     </nav>
 
     <div class="nav-right">
-      <button class="join-btn">Join Online</button>
-      <i class="fas fa-calendar-alt"></i>
-      <i class="fas fa-map-marker-alt"></i>
-      <i class="fas fa-user-circle"></i>
+      <div class="navItem">
+        <span class="limitedOffer" onclick="location.href='admin.php';" style="cursor: pointer;">Admin</span>
+      </div>
       <span class="nav-text">MY</span>
       <div class="language-switcher">
         <select id="languageSwitcher">
@@ -42,7 +41,7 @@
   <section class="hero">
     <div class="hero-overlay">
       <div class="hero-content">
-        <span class="badge">Fitness Gym</span>
+        <span class="badge">Iron Haven</span>
         <h4>MEMBERSHIP</h4>
         <h1>THE ULTIMATE<br>MEMBERSHIP<br>EXPERIENCE</h1>
         <p>
@@ -59,12 +58,33 @@
   <div class="modal-content">
     <span class="close-btn">&times;</span>
     <h2>Join Our Membership</h2>
-    <form id="membershipForm">
+    <form id="membershipForm" action="data.php" method="POST">
+  <div class="form-grid">
+    <!-- Column 1 -->
+    <div>
       <label for="name">Full Name:</label>
       <input type="text" id="name" name="name" required />
 
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required />
+
       <label for="email">Email Address:</label>
       <input type="email" id="email" name="email" required />
+
+      <label for="card_number">Card Number:</label>
+      <input type="text" id="card_number" name="card_number" maxlength="16" required />
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" maxlength="4" required />
+    </div>
+
+    <!-- Column 2 -->
+    <div>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required />
+
+      <label for="ic_number">IC Number:</label>
+      <input type="text" id="ic_number" name="ic_number" required />
 
       <label for="membership">Select Membership:</label>
       <select id="membership" name="membership" required>
@@ -74,8 +94,29 @@
         <option value="premium">Premium</option>
       </select>
 
-      <button type="submit">Submit</button>
-    </form>
+      <label for="expiry_month">Expiry Month:</label>
+      <select id="expiry_month" name="expiry_month" required>
+        <option value="">-- Month --</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <!-- ... -->
+        <option value="12">12</option>
+      </select>
+
+      <label for="expiry_year">Expiry Year:</label>
+      <select id="expiry_year" name="expiry_year" required>
+        <option value="">-- Year --</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <!-- ... -->
+      </select>
+    </div>
+  </div>
+
+  <!-- Submit button spans full width -->
+  <button type="submit">Submit</button>
+</form>
   </div>
 </div>
  
@@ -137,7 +178,7 @@
     <div class="footer-container">
       <!-- Left: Navigation Links -->
       <div class="footer-links">
-        <div class="logo"> <img src="img/Icon/Fitness.png" alt="kote" height="30"> </div>
+        <div class="logo"> <img src="img/Icon/Iron Haven.png" alt="kote" height="30"> </div>
 
         <div class="link-columns">
           <ul>
