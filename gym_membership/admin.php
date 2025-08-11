@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Management</title>
+    <title>Payment Management</title>
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <h2>Registration Form</h2>
+    <h2>Payments</h2>
     <table>
         <tr>
             <th>No.</th>
-            <th>ic_number</th>
-            <th>name</th>
-            <th>phone</th>
-            <th>address</th>
-            <th>card_number</th>
-            <th>expiry_month</th>
-            <th>expiry_year</th>
-            <th>cvv</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email address</th>
+            <th>Card Number</th>
+            <th>CVV</th>
+            <th>Address</th>
+            <th>IC Number</th>
+            <th>Select Membership</th>
+            <th>Expiry Month</th>
+            <th>Expiry Year</th>
+
         </tr>
         <?php
     // Connect to the database
@@ -35,7 +38,7 @@
     }
 
     // Query payments table
-    $sql = "SELECT name, ic_number, phone, address, card_number, expiry_month, expiry_year, cvv FROM form";
+    $sql = "SELECT id,name, phone, email, card_number, cvv, address, ic_number, membership, expiry_month, expiry_year FROM payment";
     $result = $conn->query($sql);
 
     // Check for errors
@@ -52,14 +55,23 @@
             echo "<tr>";
             echo "<td>".$serialNumber."</td>";
             echo "<td>".$row["name"]."</td>";
-            echo "<td>".$row["ic_number"]."</td>";
             echo "<td>".$row["phone"]."</td>";
-            echo "<td>".$row["address"]."</td>";
+            echo "<td>".$row["email"]."</td>";
             echo "<td>".$row["card_number"]."</td>";
+            echo "<td>".$row["cvv"]."</td>";
+            echo "<td>".$row["address"]."</td>";
+            echo "<td>".$row["ic_number"]."</td>";
+            echo "<td>".$row["membership"]."</td>";
             echo "<td>".$row["expiry_month"]."</td>";
             echo "<td>".$row["expiry_year"]."</td>";
-            echo "<td>".$row["cvv"]."</td>";
-            echo "</tr>";
+            echo "<td>
+                     <form method='POST' action='delete_payment.php' onsubmit=\"return confirm('Are you sure you want to delete this record?');\">
+                         <input type='hidden' name='delete_id' value='" . $row["id"] . "' />
+                         <input type='submit' value='Delete' />
+                     </form>
+                     </td>";
+
+             echo "</tr>";
             $serialNumber++; // Increment serial number for next row
         }
     } else {
